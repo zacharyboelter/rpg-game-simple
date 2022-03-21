@@ -3,7 +3,7 @@
 
 // refactor from for loop to array constructor that fills with '0', then maps over and creates random number to take the place of '0'.
 function getDiceRollArray(diceCount) {
-    return new Array(diceCount).fill(0).map(function() {
+    return new Array(diceCount).fill(0).map(function () {
         return Math.floor(Math.random() * 6) + 1
     })
 }
@@ -35,21 +35,22 @@ const monster = {
 
 // refactor constructor function that sets renderCharacter function as method
 function Character(data) {
-// Replace this.blah with an Object.assign() method
-// Object.assign(target, source)
+    // Replace this.blah with an Object.assign() method
+    // Object.assign(target, source)
     Object.assign(this, data)
-// Move getDiceHtml function to method on the Character construction function
-// function that takes diceCount, calls random from first function. Maps through array above and sets the html for each die to the random numbers.
-    this.getDiceHtml = function(diceCount) {
+    // Move getDiceHtml function to method on the Character construction function
+    // function that takes diceCount, calls random from first function. Maps through array above and sets the html for each die to the random numbers.
+    this.getDiceHtml = function (diceCount) {
         return getDiceRollArray(diceCount).map(function (num) {
             return `<div class="dice">${num}</div>`
         }).join('')
     }
-    
+
     this.getCharacterHtml = function () {
         const { elementId, name, avatar, health, diceCount } = this
         const diceHtml = this.getDiceHtml(diceCount)
-        return document.getElementById(elementId).innerHTML = `
+
+        return `
         <div class="character-card">
             <h4 class="name"> ${name} </h4>
             <img class="avatar" src="${avatar}" />
@@ -67,8 +68,12 @@ const wizard = new Character(hero)
 const villain = new Character(monster)
 
 //Render them on the page.
-wizard.getCharacterHtml()
-villain.getCharacterHtml()
+function render() {
+    document.getElementById(wizard.elementId).innerHTML = wizard.getCharacterHtml()
+    document.getElementById(villain.elementId).innerHTML = villain.getCharacterHtml()
+}
+
+render()
 
 // function that declares empty array, take the diceCount (hard code for now) 
 // as param, generates random number until diceCount. Returns new loaded array.
