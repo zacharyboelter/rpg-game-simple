@@ -4,7 +4,7 @@ const hero = {
     name: 'Wizard',
     avatar: './images/wizard.png',
     health: 60,
-    diceRoll: [6, 1, 5],
+    diceRoll: [4, 2, 5],
     diceCount: 3
 }
 
@@ -24,12 +24,7 @@ function renderCharacter(data) {
     let diceHtml = diceRoll.map(function(dice) {
         return `<div class="dice">${dice}</div>`
     })
-
-    // for (let i = 0; i < diceCount; i ++) {
-    //     diceHtml += `<div class="dice">${diceRoll[i]}</div>`
-    // }
-
-    
+    const diceJoin = diceHtml.join(' ')
 
     document.getElementById(elementId).innerHTML = `
     <div class="character-card">
@@ -37,7 +32,7 @@ function renderCharacter(data) {
         <img class="avatar" src="${avatar}" />
         <p class="health">health: <b> ${health} </b></p>
         <div class="dice-container">
-            ${diceHtml}
+            ${diceJoin}
         </div>
     </div>
 `
