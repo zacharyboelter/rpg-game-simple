@@ -3,18 +3,18 @@
 
 // refactor from for loop to array constructor that fills with '0', then maps over and creates random number to take the place of '0'.
 function getDiceRollArray(diceCount) {
-    return new Array(diceCount).fill(0).map(function (num) {
+    return new Array(diceCount).fill(0).map(function() {
         return Math.floor(Math.random() * 6) + 1
     })
 }
 
-// function that takes diceCount, calls random from first function. Maps through array above and sets the html for each die to the random numbers.
+
 // join() at end to get rid of commas.
-function getDiceHtml(diceCount) {
-    return getDiceRollArray(diceCount).map(function (num) {
-        return `<div class="dice">${num}</div>`
-    }).join('')
-}
+// function getDiceHtml(diceCount) {
+//     return getDiceRollArray(diceCount).map(function (num) {
+//         return `<div class="dice">${num}</div>`
+//     }).join('')
+// }
 
 const hero = {
     elementId: 'hero',
@@ -33,18 +33,22 @@ const monster = {
 }
 
 
-// constructor function that sets renderCharacter function as method
+// refactor constructor function that sets renderCharacter function as method
 function Character(data) {
-    this.elementId = data.elementId,
-        this.name = data.name,
-        this.avatar = data.avatar,
-        this.health = data.health,
-        this.diceCount = data.diceCount
+// Replace this.blah with an Object.assign() method
+// Object.assign(target, source)
+    Object.assign(this, data)
+// Move getDiceHtml function to method on the Character construction function
+// function that takes diceCount, calls random from first function. Maps through array above and sets the html for each die to the random numbers.
+    this.getDiceHtml = function(diceCount) {
+        return getDiceRollArray(diceCount).map(function (num) {
+            return `<div class="dice">${num}</div>`
+        }).join('')
+    }
+    
     this.getCharacterHtml = function () {
-        const { elementId, name, avatar, health, diceCount } = data
-
-        const diceHtml = getDiceHtml(diceCount)
-
+        const { elementId, name, avatar, health, diceCount } = this
+        const diceHtml = this.getDiceHtml(diceCount)
         return document.getElementById(elementId).innerHTML = `
         <div class="character-card">
             <h4 class="name"> ${name} </h4>
