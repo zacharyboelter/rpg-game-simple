@@ -1,7 +1,7 @@
 
 const hero = {
     elementId: 'hero',
-    name: 'Wizard',
+    name: 'Merlin',
     avatar: './images/wizard.png',
     health: 60,
     diceCount: 3
@@ -9,8 +9,8 @@ const hero = {
 
 const monster = {
     elementId: 'monster',
-    name: 'Orc',
-    avatar: './images/orc.png',
+    name: 'Madam Mim',
+    avatar: './images/madam-mim.png',
     health: 10,
     diceCount: 1
 }
@@ -19,12 +19,17 @@ const monster = {
 // function that declares empty array, take the diceCount (hard code for now) 
 // as param, generates random number until diceCount. Returns new loaded array.
 
+// let newDiceRolls = [];
+//     for (let i = 0; i < diceCount; i++) {
+//         newDiceRolls.push(Math.floor(Math.random() * 6) + 1);
+//     }
+//     return newDiceRolls;
+
 // refactor from for loop to array constructor that fills with '0', then maps over and creates random number to take the place of '0'.
 function getDiceRollArray(diceCount) {
-    const newDiceRolls = new Array(diceCount).fill('0').map(function(num){
-        return Math.floor(Math.random()*6) + 1
+    return new Array(diceCount).fill(0).map(function(num){
+        return Math.floor(Math.random() * 6 ) + 1
     })
-    return newDiceRolls
 }
 
 // function that takes diceCount, calls random from first function. Maps through array above and sets the html for each die to the random numbers.
