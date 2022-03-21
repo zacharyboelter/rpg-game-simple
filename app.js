@@ -17,6 +17,9 @@ const monster = {
     diceCount: 1
 }
 
+
+// function that declares empty array, take the diceCount (hard code for now) 
+// as param, generates random number until diceCount. Returns new loaded array.
 function getDiceRollArray(diceCount) {
     const newDiceRolls = []
     for (i = 0; i < diceCount; i++) {
@@ -25,16 +28,22 @@ function getDiceRollArray(diceCount) {
     return newDiceRolls
 }
 
-getDiceRollArray(3)
+// function that takes diceCount, calls random from first function. Maps through array above and sets the html for each die to the random numbers.
+// join() at end to get rid of commas.
+function getDiceHtml(diceCount) {
+    return getDiceRollArray(diceCount).map(function(num) {
+        return `<div class="dice">${num}</div>`
+    }).join('')
+}
 
 
 
 function renderCharacter(data) {
+
     const {elementId, name, avatar, health, diceRoll, diceCount} = data
 
-    const diceHtml = diceRoll.map(function(dice) {
-        return `<div class="dice">${dice}</div>`
-    }).join(' ')
+    // set diceHtml to the above function, using the diceCount as param.
+    const diceHtml = getDiceHtml(diceCount)
 
     document.getElementById(elementId).innerHTML = `
     <div class="character-card">
