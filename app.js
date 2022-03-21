@@ -18,11 +18,12 @@ const monster = {
 
 // function that declares empty array, take the diceCount (hard code for now) 
 // as param, generates random number until diceCount. Returns new loaded array.
+
+// refactor from for loop to array constructor that fills with '0', then maps over and creates random number to take the place of '0'.
 function getDiceRollArray(diceCount) {
-    const newDiceRolls = []
-    for (i = 0; i < diceCount; i++) {
-       newDiceRolls.push(Math.floor(Math.random() * 6) + 1)
-    }
+    const newDiceRolls = new Array(diceCount).fill('0').map(function(num){
+        return Math.floor(Math.random()*6) + 1
+    })
     return newDiceRolls
 }
 
