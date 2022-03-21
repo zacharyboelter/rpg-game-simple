@@ -57,9 +57,12 @@ function Character(data) {
     `}
 }
 
+
+//create 2 new instances of Character
 const wizard = new Character(hero)
 const villain = new Character(monster)
 
+//Render them on the page.
 wizard.getCharacterHtml()
 villain.getCharacterHtml()
 
