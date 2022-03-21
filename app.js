@@ -16,21 +16,25 @@ function getDiceRollArray(diceCount) {
 //     }).join('')
 // }
 
-const hero = {
-    elementId: 'hero',
-    name: 'Merlin',
-    avatar: './images/wizard.png',
-    health: 60,
-    diceCount: 3
+// Amalgamation of the two different character objects into one object
+
+const characterData = {
+    hero: {
+        elementId: 'hero',
+        name: 'Merlin',
+        avatar: './images/wizard.png',
+        health: 60,
+        diceCount: 3
+    },
+    monster: {
+        elementId: 'monster',
+        name: 'Madam Mim',
+        avatar: './images/madam-mim.png',
+        health: 10,
+        diceCount: 1
+    }
 }
 
-const monster = {
-    elementId: 'monster',
-    name: 'Madam Mim',
-    avatar: './images/madam-mim.png',
-    health: 10,
-    diceCount: 1
-}
 
 
 // refactor constructor function that sets renderCharacter function as method
@@ -64,8 +68,8 @@ function Character(data) {
 
 
 //create 2 new instances of Character
-const wizard = new Character(hero)
-const villain = new Character(monster)
+const wizard = new Character(characterData.hero)
+const villain = new Character(characterData.monster)
 
 //Render them on the page.
 function render() {
