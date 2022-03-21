@@ -1,4 +1,21 @@
 
+
+
+// refactor from for loop to array constructor that fills with '0', then maps over and creates random number to take the place of '0'.
+function getDiceRollArray(diceCount) {
+    return new Array(diceCount).fill(0).map(function (num) {
+        return Math.floor(Math.random() * 6) + 1
+    })
+}
+
+// function that takes diceCount, calls random from first function. Maps through array above and sets the html for each die to the random numbers.
+// join() at end to get rid of commas.
+function getDiceHtml(diceCount) {
+    return getDiceRollArray(diceCount).map(function (num) {
+        return `<div class="dice">${num}</div>`
+    }).join('')
+}
+
 const hero = {
     elementId: 'hero',
     name: 'Merlin',
@@ -16,6 +33,36 @@ const monster = {
 }
 
 
+// constructor function that sets renderCharacter function as method
+function Character(data) {
+    this.elementId = data.elementId,
+        this.name = data.name,
+        this.avatar = data.avatar,
+        this.health = data.health,
+        this.diceCount = data.diceCount
+    this.getCharacterHtml = function () {
+        const { elementId, name, avatar, health, diceCount } = data
+
+        const diceHtml = getDiceHtml(diceCount)
+
+        return document.getElementById(elementId).innerHTML = `
+        <div class="character-card">
+            <h4 class="name"> ${name} </h4>
+            <img class="avatar" src="${avatar}" />
+            <p class="health">health: <b> ${health} </b></p>
+            <div class="dice-container">
+                ${diceHtml}
+            </div>
+        </div>
+    `}
+}
+
+const wizard = new Character(hero)
+const villain = new Character(monster)
+
+wizard.getCharacterHtml()
+villain.getCharacterHtml()
+
 // function that declares empty array, take the diceCount (hard code for now) 
 // as param, generates random number until diceCount. Returns new loaded array.
 
@@ -25,40 +72,30 @@ const monster = {
 //     }
 //     return newDiceRolls;
 
-// refactor from for loop to array constructor that fills with '0', then maps over and creates random number to take the place of '0'.
-function getDiceRollArray(diceCount) {
-    return new Array(diceCount).fill(0).map(function(num){
-        return Math.floor(Math.random() * 6 ) + 1
-    })
-}
 
-// function that takes diceCount, calls random from first function. Maps through array above and sets the html for each die to the random numbers.
-// join() at end to get rid of commas.
-function getDiceHtml(diceCount) {
-    return getDiceRollArray(diceCount).map(function(num) {
-        return `<div class="dice">${num}</div>`
-    }).join('')
-}
 
-function renderCharacter(data) {
 
-    const {elementId, name, avatar, health, diceCount} = data
 
-    // set diceHtml to the above function, using the diceCount as param(diceCount is availiable due to destructuring of data ^^^^)
-    const diceHtml = getDiceHtml(diceCount)
+// refactor function into the constructor function above
+// function renderCharacter(data) {
 
-    document.getElementById(elementId).innerHTML = `
-    <div class="character-card">
-        <h4 class="name"> ${name} </h4>
-        <img class="avatar" src="${avatar}" />
-        <p class="health">health: <b> ${health} </b></p>
-        <div class="dice-container">
-            ${diceHtml}
-        </div>
-    </div>
-`
-}
+//     const { elementId, name, avatar, health, diceCount } = data
 
-renderCharacter(hero)
-renderCharacter(monster)
+//     // set diceHtml to the above function, using the diceCount as param(diceCount is availiable due to destructuring of data ^^^^)
+//     const diceHtml = getDiceHtml(diceCount)
+
+//     document.getElementById(elementId).innerHTML = `
+//     <div class="character-card">
+//         <h4 class="name"> ${name} </h4>
+//         <img class="avatar" src="${avatar}" />
+//         <p class="health">health: <b> ${health} </b></p>
+//         <div class="dice-container">
+//             ${diceHtml}
+//         </div>
+//     </div>
+// `
+// }
+
+// renderCharacter(hero)
+// renderCharacter(monster)
 
