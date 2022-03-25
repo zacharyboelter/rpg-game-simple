@@ -1,4 +1,4 @@
-import {getDiceRollArray} from "./utils.js"
+import {getDiceRollArray, getDicePlaceholderHtml} from "./utils.js"
 
 // refactor constructor function that sets renderCharacter function as method
 function Character(data) {
@@ -12,10 +12,13 @@ function Character(data) {
             return `<div class="dice">${num}</div>`
         }).join('')
     }
+    this.diceArray = getDicePlaceholderHtml(this.diceCount)
+    
 
     this.getCharacterHtml = function () {
         const { elementId, name, avatar, health, diceCount } = this
         const diceHtml = this.getDiceHtml(diceCount)
+        
 
         return `
         <div class="character-card">
@@ -23,7 +26,7 @@ function Character(data) {
             <img class="avatar" src="${avatar}" />
             <p class="health">health: <b> ${health} </b></p>
             <div class="dice-container">
-                ${diceHtml}
+                ${this.diceArray}
             </div>
         </div>
     `}
