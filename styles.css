@@ -10,13 +10,6 @@ html, body {
     font-family: 'MedievalSharp', cursive;
 }
 
-img {
-    width: 100%;
-    /* display: block; */
-    object-fit: cover;
-    max-height: 150px;
-}
-
 main {
     display:flex;
     flex-direction: column;
