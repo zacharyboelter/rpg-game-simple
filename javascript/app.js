@@ -14,8 +14,8 @@ render()
 function attack() {
     wizard.getDiceHtml()
     villain.getDiceHtml()
-    wizard.takeDamage()
-    villain.takeDamage()
+    wizard.takeDamage(villain.currentDiceScore)
+    villain.takeDamage(wizard.currentDiceScore)
     render()
 
 }

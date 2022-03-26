@@ -71,6 +71,8 @@ main {
     width: 15vh;
     border: 2px solid #000721;
     max-width:100%;
+    max-height: 150px;
+    object-fit: cover;
     opacity: 0.8;
     border-radius: 10px;
     background-color: rgba(0, 7, 33, 0.8);

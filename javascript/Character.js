@@ -19,8 +19,9 @@ function Character(data) {
         }).join('')
     }
     
-    this.takeDamage = function() {
-        console.log(`${this.name} is damaged`)
+    //function that will handle the damage inflicted on each character
+    this.takeDamage = function(attackScoreArray) {
+        console.log(`${this.name}: ${attackScoreArray}`)
     }
     
 
