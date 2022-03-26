@@ -14,17 +14,13 @@ function Character(data) {
     // Update ~~~ sets currentDiceScore to whatever the diceRollArray puts out
     this.getDiceHtml = function (diceCount) {
         this.currentDiceScore = getDiceRollArray(this.diceCount)
-        this.diceArray = this.currentDiceScore.map(function(num){
-            return `<div class="dice">${num}</div>`
-        }).join('')
+        this.diceArray = this.currentDiceScore.map(num => `<div class="dice">${num}</div>`).join('')
     }
     
     //function that will handle the damage inflicted on each character
     //use reduce method to get sum of diceRoll, store it in totalAttackScore 
     this.takeDamage = function(attackScoreArray) {
-        const totalAttackScore = attackScoreArray.reduce(function(total, num){
-            return total + num
-        })
+        const totalAttackScore = attackScoreArray.reduce( (total, num) => total + num )
         //decrement health using totalAttackScore
         this.health -= totalAttackScore
         if (this.health <= 0){
