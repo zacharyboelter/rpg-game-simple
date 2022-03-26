@@ -21,3 +21,15 @@ function attack() {
 }
 
 document.getElementById('attack-button').addEventListener('click', attack)
+
+
+
+
+
+// const rainJanByWeek = [75, 83, 66, 43, 55, 99, 87, 16, 89, 64, 70, 80, 94, 77, 66, 73]
+
+// const totalRainfallJan = rainJanByWeek.reduce(function(total, currentEl) {
+//     return total + currentEl
+// })
+
+// console.log(totalRainfallJan)
