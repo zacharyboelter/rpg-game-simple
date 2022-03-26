@@ -14,7 +14,7 @@ function Character(data) {
     // Update ~~~ sets currentDiceScore to whatever the diceRollArray puts out
     this.getDiceHtml = function (diceCount) {
         this.currentDiceScore = getDiceRollArray(this.diceCount)
-        this.diceArray = this.currentDiceScore.map(num => `<div class="dice">${num}</div>`).join('')
+        this.diceArray = this.currentDiceScore.map( num => `<div class="dice">${num}</div>`).join('')
     }
     
     //function that will handle the damage inflicted on each character
