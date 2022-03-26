@@ -12,7 +12,12 @@ function render() {
 render()
 
 function attack() {
+    wizard.getDiceHtml()
+    villain.getDiceHtml()
+    wizard.takeDamage()
+    villain.takeDamage()
     render()
+
 }
 
 document.getElementById('attack-button').addEventListener('click', attack)
