@@ -31,7 +31,6 @@ function Character(data) {
             this.health = 0
             this.isDead = true
         }
-        console.log(this.isDead)
     }
     
     this.getCharacterHtml = function () {

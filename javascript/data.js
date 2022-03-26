@@ -3,7 +3,7 @@ const characterData = {
     hero: {
         name: 'Merlin',
         avatar: './images/wizard.png',
-        health: 60,
+        health: 5,
         diceCount: 3,
         currentDiceScore: [],
         isDead: false
@@ -11,7 +11,7 @@ const characterData = {
     monster: {
         name: 'Madam Mim',
         avatar: './images/madam-mim.png',
-        health: 20,
+        health: 200,
         diceCount: 1,
         currentDiceScore: [],
         isDead: false
