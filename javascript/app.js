@@ -29,7 +29,13 @@ function endGame() {
         : wizard.health < 0 ? `${villain.name} has defeated ${wizard.name}` 
         : `${wizard.name} has defeated ${villain.name}` 
         
-        console.log(endMessage) 
+    const endEmoji = wizard.health > 0 ? "🔮" : "☠️"
+    document.body.innerHTML = 
+    `<div class="end-game">
+        <h2>Game Over</h2>
+        <h3>${endMessage}</h3>
+        <p class="end-emoji">${endEmoji}</p>
+    </div>` 
 }
 
 document.getElementById('attack-button').addEventListener('click', attack)
