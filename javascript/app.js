@@ -2,13 +2,19 @@ import characterData from "./data.js"
 import Character from "./Character.js"
 
 const wizard = new Character(characterData.hero)
-const villain = new Character(characterData.monster)
+const villain = new Character(characterData.mim)
+
+let monstersArray = ["mim", "crocodile", "dragon"];
+
+
+const getnewMonster = () => {
+    const nextMonsterData = characterData[monstersArray.shift()]
+}
 
 function render() {
     document.getElementById('hero').innerHTML = wizard.getCharacterHtml()
-    document.getElementById('monster').innerHTML = villain.getCharacterHtml()
+    document.getElementById('mim').innerHTML = villain.getCharacterHtml()
 }
-
 render()
 
 function attack() {
