@@ -1,39 +1,41 @@
 import characterData from "./data.js"
 import Character from "./Character.js"
 
-const wizard = new Character(characterData.hero)
-const villain = new Character(characterData.mim)
-
-let monstersArray = ["mim", "crocodile", "dragon"];
-
 
 const getnewMonster = () => {
     const nextMonsterData = characterData[monstersArray.shift()]
+    return nextMonsterData ? new Character(nextMonsterData) : {}
 }
+let monstersArray = ["mim", "crocodile", "dragon"];
+const wizard = new Character(characterData.hero)
+let monster = getnewMonster()
+
+
 
 function render() {
     document.getElementById('hero').innerHTML = wizard.getCharacterHtml()
-    document.getElementById('mim').innerHTML = villain.getCharacterHtml()
+    document.getElementById('mim').innerHTML = monster.getCharacterHtml()
+
 }
 render()
 
 function attack() {
     wizard.getDiceHtml()
-    villain.getDiceHtml()
-    wizard.takeDamage(villain.currentDiceScore)
-    villain.takeDamage(wizard.currentDiceScore)
+    monster.getDiceHtml()
+    wizard.takeDamage(monster.currentDiceScore)
+    monster.takeDamage(wizard.currentDiceScore)
     render()
-    if (wizard.isDead || villain.isDead) {
+    if (wizard.isDead || monster.isDead) {
         endGame()
     }
 }
 
 // ternary that states if both are dead, no victors. Wiz health more than 0, wiz won. else villain.
 function endGame() {
-    const endMessage = wizard.health === 0 && villain.health === 0 ? 
+    const endMessage = wizard.health === 0 && monster.health === 0 ? 
     'No victors - all creatures are dead'
-        : wizard.health > 0 ? `${wizard.name} has defeated ${villain.name}` 
-        : `${villain.name} has defeated ${wizard.name}` 
+        : wizard.health > 0 ? `${wizard.name} has defeated ${monster.name}` 
+        : `${monster.name} has defeated ${wizard.name}` 
         
     const endEmoji = wizard.health > 0 ? "🔮" : "☠️"
     document.body.innerHTML = 
@@ -45,23 +47,3 @@ function endGame() {
 }
 
 document.getElementById('attack-button').addEventListener('click', attack)
-
-
-
-
-
-// const rainJanByWeek = [75, 83, 66, 43, 55, 99, 87, 16, 89, 64, 70, 80, 94, 77, 66, 73]
-
-// const totalRainfallJan = rainJanByWeek.reduce(function(total, currentEl) {
-//     return total + currentEl
-// })
-
-// console.log(totalRainfallJan)
-
-// const timeMins = 260
-
-// const message = timeMins < 30 ? 'you gotta do more'
-//     : timeMins < 60 ? 'Doing great'
-//         : 'Excellent'
-
-// console.log(message)
