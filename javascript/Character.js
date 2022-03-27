@@ -1,9 +1,7 @@
-import { getDiceRollArray, getDicePlaceholderHtml } from "./utils.js"
+import { getDiceRollArray, getDicePlaceholderHtml, getPercentage } from "./utils.js"
 import characterData from "./data.js"
 
 
-const getPercentage = (remainingHealth, maximumHealth) =>
-    (100 * remainingHealth) / maximumHealth
 
 
 // refactor constructor function that sets renderCharacter function as method
