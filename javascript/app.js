@@ -26,8 +26,8 @@ function attack() {
 function endGame() {
     const endMessage = wizard.health === 0 && villain.health === 0 ? 
     'No victors - all creatures are dead'
-        : wizard.health < 0 ? `${villain.name} has defeated ${wizard.name}` 
-        : `${wizard.name} has defeated ${villain.name}` 
+        : wizard.health > 0 ? `${wizard.name} has defeated ${villain.name}` 
+        : `${villain.name} has defeated ${wizard.name}` 
         
     const endEmoji = wizard.health > 0 ? "🔮" : "☠️"
     document.body.innerHTML = 

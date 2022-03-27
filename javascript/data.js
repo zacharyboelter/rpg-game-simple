@@ -11,7 +11,7 @@ const characterData = {
     monster: {
         name: 'Madam Mim',
         avatar: './images/madam-mim.png',
-        health: 65,
+        health: 60,
         diceCount: 2,
         currentDiceScore: [],
         isDead: false
