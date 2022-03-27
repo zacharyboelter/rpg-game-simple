@@ -18,7 +18,7 @@ const characterData = {
     },
     crocodile: {
         name: 'Crocodile',
-        avatar: './images/crocodile',
+        avatar: './images/crocodile.png',
         health: 30,
         diceCount: 1,
         currentDiceScore: [],
@@ -26,7 +26,7 @@ const characterData = {
     },
     dragon: {
         name: 'Dragon',
-        avatar: './images/dragon',
+        avatar: './images/dragon.png',
         health: 60,
         diceCount: 2,
         currentDiceScore: [],
