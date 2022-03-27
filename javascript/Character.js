@@ -46,7 +46,7 @@ function Character(data) {
 
     this.getCharacterHtml = function () {
         const { elementId, name, avatar, health, diceCount, diceArray } = this
-        const diceHtml = this.getDiceHtml(diceCount)
+        // const diceHtml = this.getDiceHtml(diceCount)
         const healthBar = this.getHealthBarHtml()
 
         return `
